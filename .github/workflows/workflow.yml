@@ -18,6 +18,9 @@ jobs:
     - name: Generate Report
       run: |
         pip install coverage
+        pip install jwcrypto
+        pip install requests
+        pip install python-jose
         coverage run -m unittest
         coverage html -d coverage_html
     - name: Upload Coverage to Codecov
