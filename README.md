@@ -1,5 +1,5 @@
 # PyGlocalAPIClient
-[![codecov](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk/branch/develop/graph/badge.svg?token=C7G7HFUIDT)](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk)
+[![codecov](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk/branch/master/graph/badge.svg?token=C7G7HFUIDT)](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk)
 
 This is the python implementation of PayGlocal's Glocal API Client. 
 
