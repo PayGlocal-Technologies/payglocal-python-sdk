@@ -52,9 +52,9 @@ class TestJwtHelper(TestCase):
         jws_headers = {
             'alg': jjwt.ALGORITHMS.RS256,
             'kid': 'c0f6da59-c64f-478b-9f13-a22314b232e6',
-            'x-gl-merchantId': 'sakshidomestic',
+            'x-gl-merchantId': 'mid',
             'x-gl-enc': 'true',
-            'issued-by': 'sakshidomestic',
+            'issued-by': 'mid',
             'is-digested': 'true'
         }
 
@@ -82,7 +82,7 @@ class TestJwtHelper(TestCase):
             'kid': '1c2a4b36-5449-4ed3-90a6-0a7999874234',
             'iat': str(int(time.time()*1000)),
             'exp': 300000,
-            'issued-by': 'sakshidomestic',
+            'issued-by': 'mid',
             'is-digested': 'true'
         }
 
