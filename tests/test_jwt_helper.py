@@ -45,16 +45,16 @@ class TestJwtHelper(TestCase):
     }
 
     private_key = pem.get_private_key()
-    public_key = pem.get_pubic_key()
+    public_key = pem.get_public_key()
 
     @mock.patch('time.time', mock.MagicMock(return_value=12345))
     def test_create_jws_token_with_rsa(self):
         jws_headers = {
             'alg': jjwt.ALGORITHMS.RS256,
             'kid': 'c0f6da59-c64f-478b-9f13-a22314b232e6',
-            'x-gl-merchantId': 'sakshidomestic',
+            'x-gl-merchantId': 'mid',
             'x-gl-enc': 'true',
-            'issued-by': 'sakshidomestic',
+            'issued-by': 'mid',
             'is-digested': 'true'
         }
 
@@ -82,7 +82,7 @@ class TestJwtHelper(TestCase):
             'kid': '1c2a4b36-5449-4ed3-90a6-0a7999874234',
             'iat': str(int(time.time()*1000)),
             'exp': 300000,
-            'issued-by': 'sakshidomestic',
+            'issued-by': 'mid',
             'is-digested': 'true'
         }
 

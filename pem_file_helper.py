@@ -15,15 +15,15 @@ class PemFileHelper:
 
     def set_private_key_from_pem_file(self):
         data = self.read_data(self.private_key_pem_file_location)
-        private_key = self.load_key_from_pem(data)
+        private_key = jwk.JWK().from_pem(data)
         return private_key
 
     def set_public_key_from_pem_file(self):
         data = self.read_data(self.public_key_pem_file_location)
-        public_key = self.load_key_from_pem(data)
+        public_key = jwk.JWK().from_pem(data)
         return public_key
 
-    def get_pubic_key(self):
+    def get_public_key(self):
         return self.merchant_public_key
 
     def get_private_key(self):
@@ -36,7 +36,3 @@ class PemFileHelper:
             f.close()
 
         return data
-
-    @staticmethod
-    def load_key_from_pem(pem_data):
-        return jwk.JWK().from_pem(pem_data)
