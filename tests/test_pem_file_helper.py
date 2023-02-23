@@ -41,7 +41,7 @@ class TestPemFileHelper(TestCase):
         self.assertEqual(public_key, expected_public_key)
 
     def test_get_pubic_key(self):
-        public_key = self.pem.get_pubic_key()
+        public_key = self.pem.get_public_key()
         expected_public_key_details = {
             "kid": "stU_K9M99AU8WVS1-pHpcw02XanpwOWSwhQBQk8MaaM",
             "thumbprint": "stU_K9M99AU8WVS1-pHpcw02XanpwOWSwhQBQk8MaaM",
