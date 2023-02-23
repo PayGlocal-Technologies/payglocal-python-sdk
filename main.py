@@ -30,14 +30,15 @@ if __name__ == "__main__":
     json_payload = get_json_payload()
     try:
         jwe_token = jwt_helper.create_jwe_token(json_payload, pem_file_helper.get_public_key())
-        log.info('Successfully create JWE token')
-        log.info('JWE token = ' + jwe_token)
+        log.info('Successfully create JWE token for payment services (Payment initiation/Refund), as a part of the '
+                 'request body of POST endpoint.')
+        log.info('JWE token for request body use (POST endpoints) = ' + jwe_token)
 
         jws_token = jwt_helper.create_jws_token_with_rsa(json_payload, pem_file_helper.get_private_key())
-        log.info('Successfully create JWS token')
-        log.info('JWS token = ' + jws_token)
+        log.info('Successfully create JWS token for payment services (Payment initiation/Refund)')
+        log.info('JWS token for request parameter use = ' + jws_token)
 
-        # for status service payload = requestUri
+        # for status service, digested payload is requestUri
         jws_token_status = jwt_helper.create_jws_token_with_rsa(status_payload, pem_file_helper.get_private_key())
         log.info("JWS token for Status call = " + jws_token_status)
 
