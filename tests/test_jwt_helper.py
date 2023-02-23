@@ -45,7 +45,7 @@ class TestJwtHelper(TestCase):
     }
 
     private_key = pem.get_private_key()
-    public_key = pem.get_pubic_key()
+    public_key = pem.get_public_key()
 
     @mock.patch('time.time', mock.MagicMock(return_value=12345))
     def test_create_jws_token_with_rsa(self):

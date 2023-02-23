@@ -25,7 +25,3 @@
   "merchantCallbackURL": "https://api.dev.payglocal.in/gl/v1/payments/merchantCallback",
   "refundType": "F"
 }
-
-
-
-
