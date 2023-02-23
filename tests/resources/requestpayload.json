@@ -1,27 +1,27 @@
 {
-  "merchantTxnId":"23AEE8CB6B62EE2AF07",
-  "paymentData": {
-    "totalAmount":"10.00",
-    "txnCurrency":"INR",
-    "cardData":{
-      "number":"4111111145551142",
-      "expiryMonth":"08",
-      "expiryYear":"2023",
-      "type":"visa",
-      "securityCode":"123"
-    },
-    "billingData":{
-      "firstName":"nihal",
-      "lastName":"nihsl8",
-      "addressStreet1":"Street 1",
-      "addressStreet2":"Near Complex 2",
-      "addressCity":"Bangalore",
-      "addressState":"Karnataka",
-      "addressPostalCode":"7667",
-      "addressCountry":"IN",
-      "emailId":"something@gmail.com"
-    }
-  },
-  "merchantCallbackURL": "https://api.dev.payglocal.in/gl/v1/payments/merchantCallback",
-  "refundType": "F"
+  "merchantTxnId": "23AEE8CB6B62EE2AF07",
+      "paymentData": {
+        "totalAmount": "10.00",
+        "txnCurrency": "INR",
+        "cardData": {
+          "number": "4111111145551142",
+          "expiryMonth": "08",
+          "expiryYear": "2023",
+          "type": "visa",
+          "securityCode": "123"
+        },
+        "billingData": {
+          "firstName": "nihal",
+          "lastName": "nihsl8",
+          "addressStreet1": "Street 1",
+          "addressStreet2": "Near Complex 2",
+          "addressCity": "Bangalore",
+          "addressState": "Karnataka",
+          "addressPostalCode": "7667",
+          "addressCountry": "IN",
+          "emailId": "something@gmail.com"
+        }
+      },
+      "merchantCallbackURL": "https://api.dev.payglocal.in/gl/v1/payments/merchantCallback",
+      "refundType": "F"
 }
