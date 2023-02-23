@@ -102,6 +102,7 @@ class JwtHelper:
 
         :return: JWE Token
         """
+
         if public_key is None:
             log.error("PayGlocal RSA public key is null.")
             return None
