@@ -40,8 +40,9 @@ class JwtHelper:
         key if there is no portfolio/parent key, otherwise, if parent/portfolio mid is present, then the parent/portfolio
         key used must be used
 
-        Create JWE headers with some custom parameters
+        Create JWS headers with some custom parameters
          -> x-gl-merchantId : merchantId of whose key is given
+         -> x-gl-kid-mid : merchant Id of parent/portfolio, if present
          -> x-gl-enc : is Payload encrypted (should be set as true)
          -> issued-by : required merchant id will be used
          -> is-digested : is payload digested (should be set as true)
@@ -86,7 +87,7 @@ class JwtHelper:
 
         jws_token = jws.JWS(payload=json.dumps(jws_claimset))
         jws_token.add_signature(key=private_key, protected=jws_headers)
-        log.info("Signed the Auth token.")
+        log.info("Signed and created the Auth token.")
         return jws_token.serialize(compact=True)
 
     def create_jwe_token(self, payload, public_key):

@@ -34,7 +34,7 @@ if __name__ == "__main__":
                  'request body of POST endpoint.')
         log.info('JWE token for request body use (POST endpoints) = ' + jwe_token)
 
-        jws_token = jwt_helper.create_jws_token_with_rsa(json_payload, pem_file_helper.get_private_key())
+        jws_token = jwt_helper.create_jws_token_with_rsa(jwe_token, pem_file_helper.get_private_key())
         log.info('Successfully create JWS token for payment services (Payment initiation/Refund)')
         log.info('JWS token for request parameter use = ' + jws_token)
 
