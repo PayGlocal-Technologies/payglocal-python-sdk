@@ -4,7 +4,7 @@
     "totalAmount":"10.00",
     "txnCurrency":"INR",
     "cardData":{
-      "number":"4111111145551142",
+      "number":"4111111111111111",
       "expiryMonth":"08",
       "expiryYear":"2023",
       "type":"visa",
@@ -22,6 +22,6 @@
       "emailId":"something@gmail.com"
     }
   },
-  "merchantCallbackURL": "https://api.dev.payglocal.in/gl/v1/payments/merchantCallback",
+  "merchantCallbackURL": "https://api.uat.payglocal.in/gl/v1/payments/merchantCallback",
   "refundType": "F"
 }

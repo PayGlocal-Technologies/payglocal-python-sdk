@@ -8,6 +8,8 @@ from properties_reader import PropertiesFile
 PAYLOAD_JSON_FILE_PATH = 'resources/requestpayload.json'
 properties = PropertiesFile()
 status_payload = properties.get_property('glocalMerchant.status.payload')
+jws_token_to_be_verified = properties.get_property('glocalMerchant.jws.verify.token')
+
 log_level = properties.get_property('logging.level')
 log_level = log_level if log_level is not None else log.INFO
 log.basicConfig(level=log_level)
@@ -42,5 +44,16 @@ if __name__ == "__main__":
         jws_token_status = jwt_helper.create_jws_token_with_rsa(status_payload, pem_file_helper.get_private_key())
         log.info("JWS token for Status call = " + jws_token_status)
 
+        # for jws verification
+        if jws_token_to_be_verified is not None and jws_token_to_be_verified != '':
+            log.info("JWS Token to be verified is present as {" + jws_token_to_be_verified + "}, verifying token...")
+            is_verified = jwt_helper.verify_jwt_token(jws_token_to_be_verified, pem_file_helper.get_public_key())
+            if is_verified:
+                log.info("JWS token is verified from Payglocal!")
+            else:
+                log.error("JWS token verification is unsuccessful!")
+        else:
+            log.info("No JWS Token to be verified.")
+
     except RuntimeError as e:
-        log.error("Error wile creating jwe/jws token", e)
+        log.error("Error wile creating/verifying jwe/jws token", e)

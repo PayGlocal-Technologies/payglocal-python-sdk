@@ -1,5 +1,5 @@
 # PyGlocalAPIClient
-[![codecov](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk/branch/develop/graph/badge.svg?token=C7G7HFUIDT)](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk)
+[![codecov](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk/branch/master/graph/badge.svg?token=C7G7HFUIDT)](https://codecov.io/gh/PayGlocal-Technologies/payglocal-python-sdk)
 
 This is the python implementation of PayGlocal's Glocal API Client. 
 
@@ -61,6 +61,9 @@ as follows:
 `glocalMerchant.status.payload = /gl/v1/payments/<gid>/status`
 
 Use the status call JWS token shown in the output in the header of the get call.
+
+To verify a signature, from payglocal's `x-gl-token` received from merchant callback url etc, you may enter the token in `glocalMerchant.jws.verify.token = <token>`, and run `main.py`
+The logs will print out the payload successfully upon verification.
 
 ### Running Tests
 
