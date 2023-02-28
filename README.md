@@ -62,6 +62,9 @@ as follows:
 
 Use the status call JWS token shown in the output in the header of the get call.
 
+To verify a signature, from payglocal's `x-gl-token` received from merchant callback url etc, you may enter the token in `glocalMerchant.jws.verify.token = <token>`, and run `main.py`
+The logs will print out the payload successfully upon verification.
+
 ### Running Tests
 
 Tests can be run by running the following code in the project directory.
