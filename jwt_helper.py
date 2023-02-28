@@ -5,16 +5,17 @@ import logging as log
 import time
 
 from jwcrypto import jwe, jws
+
 import jose.jwt
 import jose.jwe
 import jose.jwk
+import jose.jws
 from jwcrypto.common import json_encode
 
 from properties_reader import PropertiesFile
 
 
 class JwtHelper:
-
     DIGEST_ALGORITHM = "SHA-256"
     JWS_ALGORITHM = jose.jwt.ALGORITHMS.RS256
     JWE_ALGORITHM = jose.jwe.ALGORITHMS.RSA_OAEP_256
@@ -30,7 +31,7 @@ class JwtHelper:
 
     log_level = GLOCAL_PROPERTIES.get_property('logging.level')
     log_level = log_level if log_level is not None else log.INFO
-    log.basicConfig(level=log_level)
+    log.basicConfig(level=log.DEBUG)
 
     def create_jws_token_with_rsa(self, payload, private_key):
         """
@@ -116,7 +117,7 @@ class JwtHelper:
             'alg': self.JWE_ALGORITHM,
             'enc': self.JWE_ENCRYPTION_METHOD,
             'kid': self.glocal_public_key_kid,
-            'iat': str(int(time.time()*1000)),
+            'iat': str(int(time.time() * 1000)),
             'exp': self.TOKEN_EXPIRY_TIME_IN_MILLISECONDS,
             'issued-by': required_merchant_id,
             'is-digested': 'true'
@@ -127,3 +128,23 @@ class JwtHelper:
         jwe_token.add_recipient(public_key)
         encrypted_token = jwe_token.serialize(compact=True)
         return encrypted_token
+
+    def verify_jwt_token(self, token, public_key):
+        """
+        Verify a JWT token using a public key.
+        Args:
+            :param token: The JWT token string to verify.
+            :param public_key: The public key used to verify the token.
+
+        Returns:
+            bool: True if the token is valid, False otherwise.
+        """
+        try:
+            payload = jose.jwt.get_unverified_claims(token)
+            jose.jws.verify(token, public_key, self.JWS_ALGORITHM)
+            print('Payload after verification: ' + str(payload))
+            return True
+
+        except Exception as e:
+            log.error(e)
+            return False
