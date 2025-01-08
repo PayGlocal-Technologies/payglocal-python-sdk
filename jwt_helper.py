@@ -61,11 +61,15 @@ class JwtHelper:
             log.error("Merchant RSA private key is null.")
             return None
 
+        is_payload_enc = 'true'
+        if not self.is_payload_encrypted:
+            is_payload_enc = 'false'
+
         jws_headers = {
             'alg': self.JWS_ALGORITHM,
             'kid': self.merchant_private_key_kid,
             'x-gl-merchantId': self.merchant_mid,
-            'x-gl-enc': self.is_payload_encrypted,
+            'x-gl-enc': is_payload_enc,
             'issued-by': self.merchant_mid,
             'is-digested': 'true'
         }
